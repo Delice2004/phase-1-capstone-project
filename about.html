@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — BookVerse</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-2xl">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="flex items-center justify-between h-20">
+
+      <a href="index.html" class="text-3xl font-black text-white">
+        Book<span class="text-violet-400">Verse</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-3">
+
+
+        <a href="index.html"
+          class="px-5 py-2.5 rounded-2xl text-slate-300 hover:text-white hover:bg-white/10 transition">
+          Home
+        </a>
+
+        <a href="favorites.html"
+          class="px-5 py-2.5 rounded-2xl text-slate-300 hover:text-white hover:bg-white/10 transition">
+          Favorites
+        </a>
+
+        <a href="about.html"
+          class="px-5 py-2.5 rounded-2xl text-slate-300 hover:text-white hover:bg-white/10 transition">
+          About
+        </a>
+
+      </div>
+
+      <button onclick="toggleMenu()" class="md:hidden text-3xl text-white">
+        ☰
+      </button>
+
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-slate-950/95">
+
+    <div class="px-6 py-6 space-y-3">
+
+      <a href="index.html" class="block px-5 py-3 text-slate-300">Home</a>
+      <a href="favorites.html" class="block px-5 py-3 text-slate-300">Favorites</a>
+      <a href="about.html" class="block px-5 py-3 text-slate-300">About</a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<section class="bg-slate-50">
+
+  <div class="max-w-5xl mx-auto px-6 py-24 text-center">
+
+    <div
+      class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-violet-100 text-violet-700 text-sm font-semibold mb-8">
+       About BookVerse
+    </div>
+
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+      Discover Your
+      <span class="text-violet-600">
+        Favorite Books
+      </span>
+    </h1>
+
+    <p class="mt-8 text-lg text-slate-600 leading-9 max-w-3xl mx-auto">
+      BookVerse is a modern book discovery website where users can
+      search books, explore authors, and save favorite books
+      in a clean and beautiful experience.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="max-w-7xl mx-auto px-6 pb-20">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+    <div class="bg-white rounded-3xl p-8 border border-slate-200 hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+
+      <div class="text-5xl mb-5">
+        
+      </div>
+
+      <h2 class="text-2xl font-bold mb-4">
+        Search Books
+      </h2>
+
+      <p class="text-slate-600 leading-8">
+        Search books instantly using the Open Library API and discover millions of books.
+      </p>
+
+    </div>
+
+    <div class="bg-white rounded-3xl p-8 border border-slate-200 hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+
+      <div class="text-5xl mb-5">
+        
+      </div>
+
+      <h2 class="text-2xl font-bold mb-4">
+        Save Favorites
+      </h2>
+
+      <p class="text-slate-600 leading-8">
+        Save your favorite books and access them anytime from your favorites page.
+      </p>
+
+    </div>
+
+    <div class="bg-white rounded-3xl p-8 border border-slate-200 hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+
+      <div class="text-5xl mb-5">
+       
+      </div>
+
+      <h2 class="text-2xl font-bold mb-4">
+        Responsive Design
+      </h2>
+
+      <p class="text-slate-600 leading-8">
+        Enjoy a smooth experience on desktop, tablet, and mobile devices.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="bg-slate-950 text-white py-4 mt-10">
+
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3">
+
+
+    <div class="font-bold text-lg">
+      Book<span class="text-violet-400">Verse</span>
+    </div>
+
+    <div class="flex gap-4 text-sm text-slate-400">
+
+      <a href="index.html" class="hover:text-white transition">
+        Home
+      </a>
+
+      <a href="favorites.html" class="hover:text-white transition">
+        Favorites
+      </a>
+
+      <a href="about.html" class="hover:text-white transition">
+        About
+      </a>
+
+    </div>
+    <div class="text-sm text-slate-500">
+      © 2026
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+function toggleMenu() {
+
+  document
+    .getElementById('mobileMenu')
+    .classList.toggle('hidden');
+}
+
+</script>
+
+</body>
+</html>
