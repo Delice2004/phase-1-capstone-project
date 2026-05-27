@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BookVerse</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif']
+          },
+          colors: {
+            primary: '#7c3aed',
+            dark: '#0f172a',
+            soft: '#f8fafc',
+            card: '#ffffff',
+            muted: '#64748b',
+            border: '#e2e8f0'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-soft text-dark font-sans">
+
+
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-2xl">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="flex items-center justify-between h-20">
+
+      <a href="index.html" class="text-3xl font-black text-white">
+        Book<span class="text-violet-400">Verse</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-3">
+
+        <a href="index.html"
+          class="px-5 py-2.5 rounded-2xl bg-violet-600 text-white font-medium shadow-lg shadow-violet-900/40">
+          Home
+        </a>
+
+        <a href="favorites.html"
+          class="px-5 py-2.5 rounded-2xl text-slate-300 hover:text-white hover:bg-white/10 transition">
+          Favorites
+        </a>
+
+        <a href="about.html"
+          class="px-5 py-2.5 rounded-2xl text-slate-300 hover:text-white hover:bg-white/10 transition">
+          About
+        </a>
+
+      </div>
+
+      <button onclick="toggleMenu()" class="md:hidden text-3xl text-white">
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+  <div id="mobileMenu"
+    class="hidden md:hidden border-t border-white/10 bg-slate-950/95">
+
+    <div class="px-6 py-6 space-y-3">
+
+      <a href="index.html"
+        class="block px-5 py-3 rounded-2xl bg-violet-600 text-white">
+        Home
+      </a>
+
+      <a href="favorites.html"
+        class="block px-5 py-3 rounded-2xl text-slate-300 hover:bg-white/10">
+        Favorites
+      </a>
+
+      <a href="about.html"
+        class="block px-5 py-3 rounded-2xl text-slate-300 hover:bg-white/10">
+        About
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-violet-950 to-slate-900 text-white">
+
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-violet-500/30 rounded-full blur-3xl"></div>
+
+  <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-3xl"></div>
+
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-28 relative z-10">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+    
+      <div>
+
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/10 text-violet-200 text-sm font-medium mb-8">
+           Discover Books Smarter
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black leading-tight">
+
+          Explore Your Next
+
+          <span class="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
+            Favorite Book
+          </span>
+
+        </h1>
+
+        <p class="mt-8 text-lg md:text-xl text-slate-300 leading-9 max-w-2xl">
+          Search millions of books, discover amazing authors,
+          and build your personal reading collection.
+        </p>
+
+  
+        <div class="flex flex-wrap gap-4 mt-10">
+
+          <a href="#booksGrid"
+            class="px-8 py-4 rounded-2xl bg-violet-600 hover:bg-violet-500 transition font-semibold shadow-2xl shadow-violet-900/40">
+            Start Exploring
+          </a>
+
+          <a href="favorites.html"
+            class="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition font-semibold">
+            My Favorites.
+          </a>
+
+        </div>
+
+      
+        <div class="flex flex-wrap gap-5 mt-12">
+
+          <div class="bg-white/10 border border-white/10 px-6 py-5 rounded-3xl min-w-[170px]">
+
+            <div class="text-4xl font-black text-violet-300">
+              1M+
+            </div>
+
+            <div class="text-slate-300 mt-2 text-sm">
+              Books Available
+            </div>
+
+          </div>
+
+          <div class="bg-white/10 border border-white/10 px-6 py-5 rounded-3xl min-w-[170px]">
+
+            <div class="text-4xl font-black text-pink-300">
+              24/7
+            </div>
+
+            <div class="text-slate-300 mt-2 text-sm">
+              Unlimited Access
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    
+      <div class="relative hidden lg:flex justify-center">
+
+        <div class="relative">
+
+          <div class="w-[340px] rounded-[40px] overflow-hidden border border-white/10 bg-white/10 shadow-2xl rotate-[-6deg] hover:rotate-0 transition duration-500">
+
+            <img
+              src="https://covers.openlibrary.org/b/id/10523338-L.jpg"
+              alt="Book Cover"
+              class="w-full h-[480px] object-cover"
+            />
+
+          </div>
+
+          <div class="absolute -bottom-10 -right-10 bg-slate-900/90 border border-white/10 rounded-3xl p-5 shadow-2xl">
+
+            <div class="text-sm text-slate-400 mb-2">
+              Trending Search
+            </div>
+
+            <div class="text-xl font-bold">
+              Harry Potter 
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="max-w-5xl mx-auto px-6 -mt-8 relative z-20">
+
+  <div class="bg-white rounded-3xl shadow-2xl border border-border p-4 flex flex-col md:flex-row gap-4">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search books, authors, keywords..."
+      class="flex-1 h-16 px-6 rounded-2xl bg-slate-50 outline-none text-lg border border-transparent focus:border-primary transition"
+    />
+
+    <button
+      onclick="handleSearch()"
+      class="h-16 px-10 rounded-2xl bg-primary text-white font-semibold text-lg hover:scale-[1.02] transition">
+      Search
+    </button>
+
+  </div>
+
+</section>
+<section class="max-w-7xl mx-auto px-6 py-20">
+
+  <div class="mb-10">
+
+    <h2 id="sectionTitle" class="text-4xl md:text-5xl font-bold">
+      Trending Books
+    </h2>
+
+    <p id="resultCount" class="text-muted mt-3"></p>
+
+  </div>
+
+  <!-- GRID -->
+  <div
+    id="booksGrid"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+  </div>
+
+  <!-- EMPTY / ERROR -->
+  <div
+    id="stateBox"
+    class="hidden flex-col items-center justify-center text-center py-24">
+  </div>
+
+</section>
+<!-- TOAST -->
+<div
+  id="toast"
+  class="fixed bottom-6 right-6 bg-dark text-white px-6 py-4 rounded-2xl shadow-2xl translate-y-24 opacity-0 transition-all duration-300 z-[999]">
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white py-4 mt-10">
+
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3">
+
+    <div class="font-bold">
+      Book<span class="text-primary">Verse</span>
+    </div>
+
+    <div class="flex gap-4 text-sm text-slate-400">
+      <a href="index.html">Home</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <div class="text-sm text-slate-500">
+      © 2026
+    </div>
+
+  </div>
+
+</footer>
