@@ -292,3 +292,219 @@ tailwind.config = {
     id="toast"
     class="fixed bottom-6 right-6 bg-dark text-white px-6 py-4 rounded-2xl shadow-2xl translate-y-24 opacity-0 transition-all duration-300 z-[999]">
   </div>
+
+  <script type="module">
+
+import {
+  getFavorites,
+  removeFavorite
+} from './js/favorites.js';
+
+    function showToast(msg) {
+
+      const toast = document.getElementById('toast');
+
+      toast.textContent = msg;
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 2800);
+    }
+
+    function render() {
+
+      const favorites = getFavorites();
+
+      const grid = document.getElementById('favGrid');
+
+      const empty = document.getElementById('emptyState');
+
+      const statsRow = document.getElementById('statsRow');
+
+      const clearBtn = document.getElementById('clearBtn');
+
+      const listTitle = document.getElementById('listTitle');
+
+      listTitle.textContent =
+        `Saved Books (${favorites.length})`;
+
+      if (!favorites.length) {
+
+        grid.innerHTML = '';
+
+        grid.classList.add('hidden');
+
+        empty.classList.remove('hidden');
+
+        statsRow.classList.add('hidden');
+
+        clearBtn.classList.add('hidden');
+
+        return;
+      }
+
+      empty.classList.add('hidden');
+
+      grid.classList.remove('hidden');
+
+      clearBtn.classList.remove('hidden');
+
+      statsRow.classList.remove('hidden');
+
+      const years = favorites
+        .filter(b => b.first_publish_year)
+        .map(b => b.first_publish_year);
+
+      const oldest =
+        years.length
+          ? Math.min(...years)
+          : '—';
+
+      statsRow.innerHTML = `
+
+        <div class="bg-white rounded-3xl p-7 border border-border shadow-sm">
+
+          <div class="text-5xl font-extrabold text-primary">
+            ${favorites.length}
+          </div>
+
+          <div class="text-muted mt-3">
+            Books Saved
+          </div>
+
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 border border-border shadow-sm">
+
+          <div class="text-5xl font-extrabold text-primary">
+            ${new Set(favorites.flatMap(b => b.author_name || [])).size}
+          </div>
+
+          <div class="text-muted mt-3">
+            Authors
+          </div>
+
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 border border-border shadow-sm">
+
+          <div class="text-5xl font-extrabold text-primary">
+            ${oldest}
+          </div>
+
+          <div class="text-muted mt-3">
+            Oldest Book
+          </div>
+
+        </div>
+      `;
+
+      grid.innerHTML = favorites.map(book => {
+
+        const cover = book.cover_i
+          ? `
+            <img
+              src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg"
+              alt="${book.title}"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            />
+          `
+          : `
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100">
+              <div class="text-6xl">📖</div>
+            </div>
+          `;
+
+        return `
+
+          <div
+            class="group bg-card rounded-[28px] overflow-hidden border border-border hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+
+            <div class="aspect-[2/3] overflow-hidden">
+              ${cover}
+            </div>
+
+            <div class="p-6">
+
+              <div
+                class="inline-flex px-4 py-1 rounded-full bg-purple-100 text-primary text-xs font-semibold mb-4">
+
+                ${book.first_publish_year || 'Unknown'}
+
+              </div>
+
+              <h3
+                class="text-2xl font-bold leading-snug mb-2 line-clamp-2">
+
+                ${book.title}
+
+              </h3>
+
+              <p class="text-muted mb-6 truncate">
+
+                ${book.author_name
+                  ? book.author_name[0]
+                  : 'Unknown Author'}
+
+              </p>
+
+              <button
+                onclick="window._remove('${book.key}')"
+                class="w-full h-12 rounded-2xl bg-slate-100 hover:bg-red-500 hover:text-white transition font-semibold">
+
+                ✕ Remove
+
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }).join('');
+    }
+
+    window._remove = function(key) {
+
+      const favs = getFavorites();
+
+      const book = favs.find(b => b.key === key);
+
+      removeFavorite(key);
+
+      showToast(
+        book
+          ? `"${book.title}" removed`
+          : 'Book removed'
+      );
+
+      render();
+    }
+
+    window.clearAll = function() {
+
+      if (!confirm('Remove all favorites?')) return;
+
+      getFavorites().forEach(b => removeFavorite(b.key));
+
+      showToast('All favorites cleared');
+
+      render();
+    }
+
+    window.toggleMenu = function() {
+
+      document
+        .getElementById('mobileMenu')
+        .classList.toggle('hidden');
+    }
+
+    render();
+   
+  </script>
+
+</body>
+</html>
